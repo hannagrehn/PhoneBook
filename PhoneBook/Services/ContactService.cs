@@ -134,7 +134,7 @@ namespace PhoneBook.Services
 
                             Console.Write($"{(i == selectedIndex ? "  " : "  ")}{i + 1}. {matchingContacts[i].Email}");
 
-                            // Clear the background color for the entire line
+                            
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.ForegroundColor = ConsoleColor.White;
 
