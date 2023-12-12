@@ -8,7 +8,7 @@ namespace PhoneBook.Services
 
 
     {
-        private readonly FileService _fileService = new FileService(@"C:\Education\PhoneBook\content.json");
+        private readonly FileService _fileService = new(@"C:\Education\PhoneBook\content.json");
         private List<Contact> _contactList;
 
         public ContactService()
@@ -36,7 +36,7 @@ namespace PhoneBook.Services
             }
 
             // Initialize the contact list if it's null
-            _contactList ??= new List<Contact>();
+            _contactList ??= [];
         }
 
 
@@ -45,22 +45,23 @@ namespace PhoneBook.Services
             try
             {
                 Console.WriteLine("Enter first name:");
-                string firstName = Console.ReadLine();
+                string? firstName = Console.ReadLine();
 
                 Console.WriteLine("Enter last name:");
-                string lastName = Console.ReadLine();
+                string? lastName = Console.ReadLine();
 
                 Console.WriteLine("Enter phone number:");
-                string phoneNumberInput = Console.ReadLine();
+                string? phoneNumberInput = Console.ReadLine();
 
                 if (int.TryParse(phoneNumberInput, out int phoneNumber))
                 {
                     Console.WriteLine("Enter email:");
-                    string email = Console.ReadLine();
+                    string? email = Console.ReadLine();
 
                     Contact newContact = new() { FirstName = firstName, LastName = lastName, PhoneNumber = phoneNumber, Email = email };
 
                     if (!_contactList.Any(x => x.Email == newContact.Email))
+
                     {
                         _contactList.Add(newContact);
                         _fileService.SaveContentToFile(JsonConvert.SerializeObject(_contactList));
@@ -73,7 +74,7 @@ namespace PhoneBook.Services
                 }
                 else
                 {
-                    Console.WriteLine("Invalid phone number format. Please enter a valid integer.");
+                    Console.WriteLine("Invalid phone number. Please enter a valid int.\nTry again.");
                 }
             }
             catch (Exception ex)
@@ -190,7 +191,7 @@ namespace PhoneBook.Services
         {
             try
             {
-                Console.WriteLine("Who are you looking for:");
+                Console.Write("Who you looking for: ");
                 string? searchTerm = Console.ReadLine()?.Trim();
 
                 var searchResults = _contactList

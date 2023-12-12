@@ -12,7 +12,7 @@ namespace PhoneBook.Services
         {
             ContactService contactService = new(); // Create an instance of ContactService
 
-            string[] menuItems = { "Show All", "Add", "Remove", "Search", "Exit" };
+            string[] menuItems = ["Show All", "Add", "Remove", "Search", "Exit"];
             int selectedItemIndex = 0;
 
             ConsoleKeyInfo key;
