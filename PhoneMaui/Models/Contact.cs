@@ -1,14 +1,21 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace PhoneBook.Models
+namespace PhoneMaui.Models  
 {
     public interface IContact
     {
-        string Email { get; set; }
         string FirstName { get; set; }
         string LastName { get; set; }
+        string Email { get; set; }
         int PhoneNumber { get; set; }
+        
     }
+
+
 
     public class Contact : IContact
     {
@@ -16,6 +23,6 @@ namespace PhoneBook.Models
         public string LastName { get; set; } = null!;
         public string Email { get; set; } = null!;
         public int PhoneNumber { get; set; }
-        public object FullName { get; internal set; } = null!;
     }
+
 }

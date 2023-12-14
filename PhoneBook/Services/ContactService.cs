@@ -15,7 +15,7 @@ namespace PhoneBook.Services
         {
             LoadContactsFromFile();
         }
-
+        
         private void LoadContactsFromFile()
         {
             try

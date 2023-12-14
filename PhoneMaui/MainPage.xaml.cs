@@ -1,25 +1,48 @@
-﻿namespace PhoneMaui
+﻿using PhoneMaui.Services;
+using PhoneMaui.Models;
+
+
+namespace PhoneMaui
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        private readonly IPhonebookService phonebookService;
 
-        public MainPage()
+        public MainPage(IPhonebookService phonebookService)
         {
+            this.phonebookService = phonebookService;
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        public  void ShowAllContacts_Clicked(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            
         }
-    }
 
+        public void AddContact_Clicked(object sender, EventArgs e)
+        {
+            Models.Contact newContact = new() { };
+            phonebookService.AddContact(newContact);
+        }
+
+        private IPhonebookService GetPhonebookService()
+        {
+            return phonebookService;
+        }
+
+        private void RemoveContact_Clicked(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+
+        public void UpdateContact_Clicked(object sender, EventArgs e)
+        {
+            
+           
+        }
+
+       
+    }
 }
