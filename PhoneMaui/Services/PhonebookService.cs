@@ -32,6 +32,11 @@ namespace PhoneMaui.Services
             }
         }
 
+        public void AddContact()
+        {
+
+        }
+
 
         public void RemoveContact(Models.Contact contact)
         {

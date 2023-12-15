@@ -7,7 +7,7 @@
              x:Class="PhoneMaui.MainPage">
 
     <StackLayout>
-        <!-- Add buttons/menu items for different actions -->
+        
         <Button Text="Show All" Clicked="ShowAllContacts_Clicked" />
         <Button Text="Add" Clicked="AddContact_Clicked" />
         <Button Text="Remove" Clicked="RemoveContact_Clicked" />
