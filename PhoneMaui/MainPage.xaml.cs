@@ -23,11 +23,12 @@ namespace PhoneMaui
         }
 
 
-        
+
         public void AddContact_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddContactPage());
+            Navigation.PushAsync(new AddContactPage(phonebookService));
         }
+
 
 
 
