@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook", "PhoneBook\PhoneBook.csproj", "{579D893E-E39C-4314-A5EC-2843A081BA50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneMaui", "PhoneMaui\PhoneMaui.csproj", "{3AB1C42E-C213-43A7-A021-43C1D7C360B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiPhonebook", "MauiPhonebook\MauiPhonebook.csproj", "{978CBE09-D425-4A31-9F3A-F0EA2AC73C38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +17,12 @@ Global
 		{579D893E-E39C-4314-A5EC-2843A081BA50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{579D893E-E39C-4314-A5EC-2843A081BA50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{579D893E-E39C-4314-A5EC-2843A081BA50}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3AB1C42E-C213-43A7-A021-43C1D7C360B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3AB1C42E-C213-43A7-A021-43C1D7C360B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3AB1C42E-C213-43A7-A021-43C1D7C360B3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{3AB1C42E-C213-43A7-A021-43C1D7C360B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3AB1C42E-C213-43A7-A021-43C1D7C360B3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3AB1C42E-C213-43A7-A021-43C1D7C360B3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{978CBE09-D425-4A31-9F3A-F0EA2AC73C38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{978CBE09-D425-4A31-9F3A-F0EA2AC73C38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{978CBE09-D425-4A31-9F3A-F0EA2AC73C38}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{978CBE09-D425-4A31-9F3A-F0EA2AC73C38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{978CBE09-D425-4A31-9F3A-F0EA2AC73C38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{978CBE09-D425-4A31-9F3A-F0EA2AC73C38}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
