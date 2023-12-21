@@ -5,9 +5,9 @@
              Title="AddContactPage">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Welcome to my Phonebook!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Button x:Name=""
+        <Button x:Name="btnCancel" Text="Cancel" Clicked="btnCancel_Clicked"></Button>
     </VerticalStackLayout>
 </ContentPage>
