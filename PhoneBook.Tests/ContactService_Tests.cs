@@ -6,7 +6,14 @@ namespace PhoneBook.Tests
 
         public AddContactToList_Should_Add_OneContactToList_ReturnTrue()
         {
-            return;
+            IContact Contact = new ContactService_Tests { FirstName = "Dolly", LastName = "Pardon" };
+            IContactService contactService = new ContactService_Tests();
+
+            bool result = contactService.AddContactToList(Contact);
+
+            Assert.True(result);
+
+
         }
     }
 }

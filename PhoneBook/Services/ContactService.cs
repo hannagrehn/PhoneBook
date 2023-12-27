@@ -35,11 +35,14 @@ namespace PhoneBook.Services
                 Debug.WriteLine($"An error occurred while loading contacts: {ex.Message}");
             }
 
-            // Initialize the contact list if it's null
+            
             _contactList ??= [];
         }
 
-
+        /// <summary>
+        /// This function will add a contact to the list
+        /// </summary>
+        
         public void AddContactToList()
         {
             try
@@ -146,7 +149,7 @@ namespace PhoneBook.Services
                         Console.ForegroundColor = selectedIndex == matchingContacts.Count ? ConsoleColor.Magenta : ConsoleColor.White;
                         Console.WriteLine($"  {matchingContacts.Count + 1}. Remove none");
 
-                        // Clear the background color for the entire line
+                        
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.White;
 
@@ -186,6 +189,11 @@ namespace PhoneBook.Services
                 Debug.WriteLine($"An error occurred: {ex.Message}");
             }
         }
+
+        /// <summary>
+        /// In this part you can search for a contact
+        /// </summary>
+        
 
         public void SearchForContact()
         {
