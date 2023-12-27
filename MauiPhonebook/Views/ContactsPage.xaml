@@ -15,6 +15,7 @@
                 <TextCell 
                     Text="{Binding FirstName}"
                     
+                    
                     Detail="{Binding Email}"
                     > 
                     

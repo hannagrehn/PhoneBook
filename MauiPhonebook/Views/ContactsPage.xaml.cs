@@ -27,5 +27,11 @@ public partial class ContactsPage : ContentPage
 
 	}
 
+	private void listContacts_ItemSelected(object sender, SelectionChangedEventArgs e)
+	{
+		DisplayAlert("test", "test", "ok");
+		listContacts.SelectedItem = null;
+	}
+
 
 }
