@@ -273,10 +273,20 @@ namespace PhoneBook.Services
             }
         }
 
+        /// <summary>
+        /// This will be my unit test
+        /// </summary>
+        
 
         public bool AddContactToList(IContact contact)
         {
-            return true;
+            try
+            {
+                _contactList.Add((Contact)contact);
+                return true;
+            }
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }
+            return false;
         }
     }
 }
