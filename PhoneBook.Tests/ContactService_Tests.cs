@@ -1,19 +1,24 @@
-namespace PhoneBook.Tests
+using PhoneBook.Models;
+using PhoneBook.Services;
+using PhoneBook;
+using PhoneBook.Tests;
+
+namespace PhoneBook.Tests;
+
+public class ContactService_Tests
 {
-    public class ContactService_Tests
+    [Fact]
+
+    public void AddContactToList_Should_Add_OneContactToList_ReturnTrue()
     {
-        [Fact]
+        IContact Contact = new Contact { FirstName = "Dolly", LastName = "Pardon", Email = "dolly@pardon.com" };
 
-        public AddContactToList_Should_Add_OneContactToList_ReturnTrue()
-        {
-            IContact Contact = new ContactService_Tests { FirstName = "Dolly", LastName = "Pardon" };
-            IContactService contactService = new ContactService_Tests();
+        IContactService contactService = new ContactService();
 
-            bool result = contactService.AddContactToList(Contact);
+        bool result = contactService.AddContactToList(Contact);
 
-            Assert.True(result);
+        Assert.True(result);
 
 
-        }
     }
 }

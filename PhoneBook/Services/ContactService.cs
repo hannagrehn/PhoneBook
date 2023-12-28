@@ -4,10 +4,12 @@ using System.Diagnostics;
 
 namespace PhoneBook.Services
 {
-    public class ContactService
+    public class ContactService : IContactService
 
 
     {
+        private readonly List<IContact> _icontactList = new List<IContact>();
+
         private readonly FileService _fileService = new(@"C:\Education\PhoneBook\content.json");
         private List<Contact> _contactList;
 
@@ -15,7 +17,7 @@ namespace PhoneBook.Services
         {
             LoadContactsFromFile();
         }
-        
+
         private void LoadContactsFromFile()
         {
             try
@@ -35,14 +37,14 @@ namespace PhoneBook.Services
                 Debug.WriteLine($"An error occurred while loading contacts: {ex.Message}");
             }
 
-            
+
             _contactList ??= [];
         }
 
         /// <summary>
         /// This function will add a contact to the list
         /// </summary>
-        
+
         public void AddContactToList()
         {
             try
@@ -138,7 +140,7 @@ namespace PhoneBook.Services
 
                             Console.Write($"{(i == selectedIndex ? "  " : "  ")}{i + 1}. {matchingContacts[i].Email}");
 
-                            
+
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.ForegroundColor = ConsoleColor.White;
 
@@ -149,7 +151,7 @@ namespace PhoneBook.Services
                         Console.ForegroundColor = selectedIndex == matchingContacts.Count ? ConsoleColor.Magenta : ConsoleColor.White;
                         Console.WriteLine($"  {matchingContacts.Count + 1}. Remove none");
 
-                        
+
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.White;
 
@@ -193,7 +195,7 @@ namespace PhoneBook.Services
         /// <summary>
         /// In this part you can search for a contact
         /// </summary>
-        
+
 
         public void SearchForContact()
         {
@@ -237,7 +239,7 @@ namespace PhoneBook.Services
                         }
                         else if (key.Key == ConsoleKey.Enter)
                         {
-                            break; 
+                            break;
                         }
                     } while (true);
 
@@ -272,19 +274,9 @@ namespace PhoneBook.Services
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        public bool AddContactToList(IContact contact)
+        {
+            return true;
+        }
     }
 }
