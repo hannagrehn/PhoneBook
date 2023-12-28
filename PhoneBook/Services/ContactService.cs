@@ -88,7 +88,10 @@ namespace PhoneBook.Services
             }
         }
 
-
+        /// <summary>
+        /// This is where I get all contacts from file 
+        /// </summary>
+      
 
         public IEnumerable<Contact> GetAllContactsFromList()
         {
@@ -111,6 +114,10 @@ namespace PhoneBook.Services
 
             return _contactList ?? Enumerable.Empty<Contact>();
         }
+
+        /// <summary>
+        /// This part is to search for and remove a contact
+        /// </summary>
 
         public void RemoveContactFromList()
         {
@@ -193,7 +200,7 @@ namespace PhoneBook.Services
         }
 
         /// <summary>
-        /// In this part you can search for a contact
+        /// In this part you can search for a contact and show full info
         /// </summary>
 
 
