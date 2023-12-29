@@ -10,7 +10,7 @@ namespace PhoneBook.Services
     {
         public static void MenuStart()
         {
-            ContactService contactService = new(); // Create an instance of ContactService
+            ContactService contactService = new();
 
             string[] menuItems = ["Show All", "Add", "Remove", "Search", "Exit"];
             int selectedItemIndex = 0;

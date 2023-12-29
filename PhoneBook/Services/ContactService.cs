@@ -3,6 +3,9 @@ using PhoneBook.Models;
 using System.Diagnostics;
 
 namespace PhoneBook.Services
+
+    
+
 {
     public class ContactService : IContactService
 
@@ -13,10 +16,19 @@ namespace PhoneBook.Services
         private readonly FileService _fileService = new(@"C:\Education\PhoneBook\content.json");
         private List<Contact> _contactList;
 
+        /// <summary>
+        /// Initializes a new instance of the ContactService class and loads contacts from a file.
+        /// </summary>
+
         public ContactService()
         {
+            _contactList = [];
             LoadContactsFromFile();
         }
+
+        /// <summary>
+        /// Loads contacts from a file, deserializes them, and initializes the contact list.
+        /// </summary>
 
         private void LoadContactsFromFile()
         {
@@ -26,10 +38,7 @@ namespace PhoneBook.Services
                 if (!string.IsNullOrEmpty(content))
                 {
                     var deserializedContacts = JsonConvert.DeserializeObject<List<Contact>>(content);
-                    if (deserializedContacts != null)
-                    {
-                        _contactList = deserializedContacts;
-                    }
+                    _contactList = deserializedContacts ?? new List<Contact>();
                 }
             }
             catch (Exception ex)
@@ -37,12 +46,12 @@ namespace PhoneBook.Services
                 Debug.WriteLine($"An error occurred while loading contacts: {ex.Message}");
             }
 
-
-            _contactList ??= [];
+            _contactList ??= new List<Contact>();
         }
 
+
         /// <summary>
-        /// This function will add a contact to the list
+        /// Adds a new contact to the list after obtaining information from user.
         /// </summary>
 
         public void AddContactToList()
@@ -50,18 +59,18 @@ namespace PhoneBook.Services
             try
             {
                 Console.WriteLine("Enter first name:");
-                string? firstName = Console.ReadLine();
+                string? firstName = Console.ReadLine() ?? "";
 
                 Console.WriteLine("Enter last name:");
-                string? lastName = Console.ReadLine();
+                string? lastName = Console.ReadLine() ?? "";
 
                 Console.WriteLine("Enter phone number:");
-                string? phoneNumberInput = Console.ReadLine();
+                string? phoneNumberInput = Console.ReadLine() ?? "";
 
                 if (int.TryParse(phoneNumberInput, out int phoneNumber))
                 {
                     Console.WriteLine("Enter email:");
-                    string? email = Console.ReadLine();
+                    string? email = Console.ReadLine() ?? "";
 
                     Contact newContact = new() { FirstName = firstName, LastName = lastName, PhoneNumber = phoneNumber, Email = email };
 
@@ -89,9 +98,9 @@ namespace PhoneBook.Services
         }
 
         /// <summary>
-        /// This is where I get all contacts from file 
+        /// Retrieves all contacts from the list.
         /// </summary>
-      
+        /// <returns>An IEnumerable of Contact objects representing all contacts in the list.</returns>
 
         public IEnumerable<Contact> GetAllContactsFromList()
         {
@@ -116,7 +125,7 @@ namespace PhoneBook.Services
         }
 
         /// <summary>
-        /// This part is to search for and remove a contact
+        /// Lets the user search for a contact by email and delete it from the list.
         /// </summary>
 
         public void RemoveContactFromList()
@@ -124,7 +133,7 @@ namespace PhoneBook.Services
             try
             {
                 Console.WriteLine("Enter part of the email to search for:");
-                string partialEmail = Console.ReadLine();
+                string? partialEmail = Console.ReadLine() ?? "";
 
                 var matchingContacts = _contactList
                     .Where(x => x.Email.IndexOf(partialEmail, StringComparison.OrdinalIgnoreCase) != -1)
@@ -139,6 +148,8 @@ namespace PhoneBook.Services
                         Console.Clear();
 
                         Console.WriteLine("Select a contact to remove:");
+
+                        //Background functionality
 
                         for (int i = 0; i < matchingContacts.Count; i++)
                         {
@@ -161,6 +172,8 @@ namespace PhoneBook.Services
 
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.White;
+
+                        //Key press functionality
 
                         var key = Console.ReadKey().Key;
 
@@ -200,16 +213,15 @@ namespace PhoneBook.Services
         }
 
         /// <summary>
-        /// In this part you can search for a contact and show full info
+        /// Lets the user search for a contact to display full information on console.
         /// </summary>
-
 
         public void SearchForContact()
         {
             try
             {
                 Console.Write("Who you looking for: ");
-                string? searchTerm = Console.ReadLine()?.Trim();
+                string? searchTerm = Console.ReadLine()?.Trim() ?? "";
 
                 var searchResults = _contactList
                     .Where(contact =>
@@ -280,10 +292,6 @@ namespace PhoneBook.Services
             }
         }
 
-        /// <summary>
-        /// This will be my unit test
-        /// </summary>
-        
 
         public bool AddContactToList(IContact contact)
         {
@@ -294,6 +302,16 @@ namespace PhoneBook.Services
             }
             catch (Exception ex) { Debug.WriteLine(ex.Message); }
             return false;
+        }
+
+        public IEnumerable<IContact> GetAllFromList()
+        {
+            try
+            {
+                return _contactList;
+            }
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }
+            return null!;
         }
     }
 }
