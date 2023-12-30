@@ -1,5 +1,6 @@
 using MauiPhonebook.Models;
 using Contact = MauiPhonebook.Models.Contact;
+using MauiPhonebook.Views;
 
 namespace MauiPhonebook.Views;
 
@@ -24,8 +25,23 @@ public partial class EditContactPage : ContentPage
         set
         {
             contact = ContactRepos.GetContactById(int.Parse(value));
-            lblName.Text = contact.FirstName;
+            if (contact != null)
+            {
+                entryFristName.Text = contact.FirstName;
+                entryLastName.Text = contact.LastName;
+            }
+            
+            
         }
     }
 
+    private void btnUpdate_Clicked(object sender, EventArgs e)
+    {
+        contact.LastName = entryLastName.Text;
+        contact.FirstName = entryFristName.Text;
+        
+
+        ContactRepos.UpdateContact(contact.ContactId, contact);
+        Shell.Current.GoToAsync("..");
+    }
 }
