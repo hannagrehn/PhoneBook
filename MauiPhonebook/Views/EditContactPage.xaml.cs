@@ -1,6 +1,7 @@
 using MauiPhonebook.Models;
 using Contact = MauiPhonebook.Models.Contact;
 using MauiPhonebook.Views;
+using System.Reflection.Metadata.Ecma335;
 
 namespace MauiPhonebook.Views;
 
@@ -29,6 +30,9 @@ public partial class EditContactPage : ContentPage
             {
                 entryFristName.Text = contact.FirstName;
                 entryLastName.Text = contact.LastName;
+                entryEmail.Text = contact.Email;
+                entryPhone.Text = contact.Phone;    
+                entryAddress.Text = contact.Address;
             }
             
             
@@ -37,8 +41,27 @@ public partial class EditContactPage : ContentPage
 
     private void btnUpdate_Clicked(object sender, EventArgs e)
     {
+        if (nameValidator.IsNotValid)
+        {
+            DisplayAlert("You stupid", "idiot", "try again");
+            return;
+        }
+
+        if (emailValidator.IsNotValid)
+        {
+            foreach(var error in emailValidator.Errors)
+            {
+                DisplayAlert("Very stupid", error.ToString(), "As per usual");
+            }
+
+            return;
+        }
+
         contact.LastName = entryLastName.Text;
         contact.FirstName = entryFristName.Text;
+        contact.Email = entryEmail.Text;
+        contact.Phone = entryPhone.Text;
+        contact.Address = entryAddress.Text;
         
 
         ContactRepos.UpdateContact(contact.ContactId, contact);
