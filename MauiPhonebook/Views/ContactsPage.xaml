@@ -9,13 +9,13 @@
         Background="DimGray"
         SeparatorColor="DarkGrey"
         RowHeight="70"
+        ItemSelected="listContacts_ItemSelected"
+        ItemTapped="listContacts_ItemTapped"
         >
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell 
                     Text="{Binding FirstName}"
-                    
-                    
                     Detail="{Binding Email}"
                     > 
                     

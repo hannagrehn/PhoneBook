@@ -1,6 +1,4 @@
 ﻿using PhoneBook.Models;
-using PhoneBook.Services;
-using PhoneBook;
 
 namespace PhoneBook.Services
 {

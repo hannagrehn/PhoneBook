@@ -15,8 +15,6 @@ public class ContactService_Tests
         bool result = contactService.AddContactToList(contact);
 
         Assert.True(result);
-
-
     }
 
     [Fact]
@@ -32,7 +30,4 @@ public class ContactService_Tests
         Assert.NotNull(result);  
         Assert.True(((IEnumerable<Contact>)result).Any());
     }
-
-    
-    
 }

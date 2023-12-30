@@ -8,6 +8,10 @@ namespace PhoneBook.Services
 {
     public class MenuService
     {
+        /// <summary>
+        /// Start menu with arrow keys amd background color change.
+        /// </summary>
+        
         public static void MenuStart()
         {
             ContactService contactService = new();
@@ -64,15 +68,15 @@ namespace PhoneBook.Services
 
                         case 1:
                             contactService.AddContactToList();
-                            Console.ReadKey(true);
+                            Console.ReadKey();
                             break;
                         case 2:
                             contactService.RemoveContactFromList();
-                            Console.ReadKey(true);
+                            Console.ReadKey();
                             break;
                         case 3:
                             contactService.SearchForContact();
-                            Console.ReadKey(true);
+                            Console.ReadKey();
                             break;
                         case 4:
                             Console.WriteLine("Exiting the program");
