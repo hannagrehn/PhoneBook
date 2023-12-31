@@ -9,15 +9,17 @@ public partial class ContactsPage : ContentPage
 	public ContactsPage()
 	{
 		InitializeComponent();
-
-        List<Contact> contacts = ContactRepos.GetContacts();
-
-		listContacts.ItemsSource = contacts;
 			
 	}
 
-	
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
 
+        List<Contact> contacts = ContactRepos.GetContacts();
+
+        listContacts.ItemsSource = contacts;
+    }
 	
 
     private async void listContacts_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -33,4 +35,9 @@ public partial class ContactsPage : ContentPage
 	{
 		listContacts.SelectedItem = null;
 	}
+
+    private void btnAdd_Clicked(object sender, EventArgs e)
+    {
+		Shell.Current.GoToAsync(nameof(AddContactPage));	
+    }
 }

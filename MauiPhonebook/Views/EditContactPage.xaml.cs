@@ -1,7 +1,5 @@
 using MauiPhonebook.Models;
 using Contact = MauiPhonebook.Models.Contact;
-using MauiPhonebook.Views;
-using System.Reflection.Metadata.Ecma335;
 
 namespace MauiPhonebook.Views;
 
@@ -28,43 +26,30 @@ public partial class EditContactPage : ContentPage
             contact = ContactRepos.GetContactById(int.Parse(value));
             if (contact != null)
             {
-                entryFristName.Text = contact.FirstName;
-                entryLastName.Text = contact.LastName;
-                entryEmail.Text = contact.Email;
-                entryPhone.Text = contact.Phone;    
-                entryAddress.Text = contact.Address;
+                contactCtrl.FirstName = contact.FirstName;
+                contactCtrl.LastName = contact.LastName;
+                contactCtrl.Email = contact.Email;
+                contactCtrl.Phone = contact.Phone;    
+                contactCtrl.Address = contact.Address;
             }
-            
-            
         }
     }
 
     private void btnUpdate_Clicked(object sender, EventArgs e)
     {
-        if (nameValidator.IsNotValid)
-        {
-            DisplayAlert("You stupid", "idiot", "try again");
-            return;
-        }
 
-        if (emailValidator.IsNotValid)
-        {
-            foreach(var error in emailValidator.Errors)
-            {
-                DisplayAlert("Very stupid", error.ToString(), "As per usual");
-            }
-
-            return;
-        }
-
-        contact.LastName = entryLastName.Text;
-        contact.FirstName = entryFristName.Text;
-        contact.Email = entryEmail.Text;
-        contact.Phone = entryPhone.Text;
-        contact.Address = entryAddress.Text;
-        
+        contact.LastName = contactCtrl.FirstName;
+        contact.FirstName = contactCtrl.LastName;
+        contact.Email = contactCtrl.Email;
+        contact.Phone = contactCtrl.Phone;
+        contact.Address = contactCtrl.Address;
 
         ContactRepos.UpdateContact(contact.ContactId, contact);
         Shell.Current.GoToAsync("..");
+    }
+
+    private void contactCtrl_OnError(object sender, string e)
+    {
+        DisplayAlert("Error", e, "As per usual");
     }
 }

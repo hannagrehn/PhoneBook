@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace MauiPhonebook.Models
 {
     public static class ContactRepos
@@ -27,26 +22,16 @@ namespace MauiPhonebook.Models
                 return new Contact
                 {
                     ContactId = contactId,
-                    Address = contact.Address,
-                    Email = contact.Email,
                     FirstName = contact.FirstName,
                     LastName = contact.LastName,
+                    Email = contact.Email,
                     Phone = contact.Phone,
+                    Address = contact.Address,
+                    
                 };
             }
             return null;
         }
-
-
-
-
-
-
-
-
-
-
-
 
 
         public static void UpdateContact(int contactId, Contact contact)
@@ -62,6 +47,15 @@ namespace MauiPhonebook.Models
                 contactToUpdate.Phone = contact.Phone;
                 contactToUpdate.Address = contact.Address;
             }
+        }
+
+
+        public static void AddContact(Contact contact)
+        {
+            var maxId = _contacts.Max(x => x.ContactId);
+            contact.ContactId = maxId + 1;
+            _contacts.Add(contact);
+
         }
     }
 }

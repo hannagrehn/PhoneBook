@@ -2,12 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiPhonebook.Views.AddContactPage"
+             xmlns:controls="clr-namespace:MauiPhonebook.Views.Controls"
              Title="AddContactPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to my Phonebook!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Button x:Name="btnCancel" Text="Cancel" Clicked="btnCancel_Clicked"></Button>
-    </VerticalStackLayout>
+
+    <controls:ContactControl 
+        x:Name="contactCtrl"
+        OnSave="contactCtrl_OnSave_1"
+        OnCancel="contactCtrl_OnCancel"
+        OnError="contactCtrl_OnError">
+    </controls:ContactControl>
+
 </ContentPage>
