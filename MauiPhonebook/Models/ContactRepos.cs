@@ -33,7 +33,6 @@ namespace MauiPhonebook.Models
             return null;
         }
 
-
         public static void UpdateContact(int contactId, Contact contact)
         {
             if (contactId != contact.ContactId) return;
@@ -49,7 +48,6 @@ namespace MauiPhonebook.Models
             }
         }
 
-
         public static void AddContact(Contact contact)
         {
             var maxId = _contacts.Max(x => x.ContactId);
@@ -60,4 +58,4 @@ namespace MauiPhonebook.Models
     }
 }
 
-//idk lets go
+
