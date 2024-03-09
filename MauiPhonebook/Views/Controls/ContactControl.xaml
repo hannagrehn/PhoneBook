@@ -74,3 +74,5 @@
         <Button x:Name="btnCancel" Text="Cancel" Clicked="btnCancel_Clicked" ></Button>
     </VerticalStackLayout>
 </ContentView>
+
+    
