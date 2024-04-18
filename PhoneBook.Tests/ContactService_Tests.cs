@@ -31,10 +31,3 @@ public class ContactService_Tests
         Assert.True(((IEnumerable<Contact>)result).Any());
     }
 }
-
-//i really need to add more tests here
-
-//what about testts??
-
-//dont you want someone to care aboút you
-//heyheyy
